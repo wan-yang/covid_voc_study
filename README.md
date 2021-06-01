@@ -1,18 +1,19 @@
-# Code and data for: Wan Yang & Jeffrey Shaman, Epidemiological characteristics of three SARS-CoV-2 variants of concern and implications for future COVID-19 pandemic outcomes. medRxiv, 2021.2005.2019.21257476 (2021).
+## Code and data for: Wan Yang & Jeffrey Shaman, Epidemiological characteristics of three SARS-CoV-2 variants of concern and implications for future COVID-19 pandemic outcomes. medRxiv, 2021.2005.2019.21257476 (2021).
 
-## driver scipts
-Those labeled 'driver*': Used to run three sub-studies of model-inference and simulation, as indicated by the name
 
-## data
+### data
 This folder includes all relavant data needed to run the model-inference and simulations
 
-## scripts
+### scripts
 This folder includes all model code used in this study. 
 Subfolders include code for different parts of the study, as labeled
 
-## results
+### results
 This folder includes compiled model-inference results, as labeled 
 Note that for the multi-variant simulations, because the files are too large, we do not include those. For interested readers, please run those using the provided code on your local machine and then compile the results using the analysis code. 
+
+### driver scipts
+Those labeled 'driver*': Used to run three sub-studies of model-inference and simulation, as indicated by the name
 
 ## contact
 wy2202 at cumc.columbia.edu
