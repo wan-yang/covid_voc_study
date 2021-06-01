@@ -7,13 +7,14 @@ This folder includes all relavant data needed to run the model-inference and sim
 ### scripts
 This folder includes all model code used in this study. 
 Subfolders include code for different parts of the study, as labeled
+#### scripts/drivers
+Those labeled 'driver*': Used to run three sub-studies of model-inference and simulation, as indicated by the name
 
 ### results
 This folder includes compiled model-inference results, as labeled 
 Note that for the multi-variant simulations, because the files are too large, we do not include those. For interested readers, please run those using the provided code on your local machine and then compile the results using the analysis code. 
 
-### driver scipts
-Those labeled 'driver*': Used to run three sub-studies of model-inference and simulation, as indicated by the name
+
 
 ## contact
 wy2202 at cumc.columbia.edu
