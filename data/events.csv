@@ -1,0 +1,13 @@
+loc,type,event,start,end,ref,
+uk,npi,Lockdown,3/22/20,7/4/20,"https://en.wikipedia.org/wiki/The_Health_Protection_(Coronavirus,_Restrictions)_(England)_Regulations_2020",
+uk,npi,Lockdown,11/5/20,12/2/20,https://en.wikipedia.org/wiki/COVID-19_pandemic_in_the_United_Kingdom#Spring_2020:_First_wave,
+uk,npi,Lockdown,1/5/21,3/8/21,school reopen,
+uk,virus,B.1.1.7 Id'd as a VOC,12/1/20,,,
+uk,vx,Vaccination,12/8/20,,https://en.wikipedia.org/wiki/COVID-19_pandemic_in_the_United_Kingdom#Spring_2020:_First_wave,
+sa,npi,Lockdown,3/26/20,4/16/20,https://businesstech.co.za/news/government/383927/ramaphosa-announces-21-day-coronavirus-lockdown-for-south-africa/,
+sa,NPI,Restrictions,12/29/20,3/1/21,,
+sa,virus,B.1.351 Id'd as a VOC,12/18/20,,https://www.yahoo.com/news/south-africa-experiencing-covid-19-173021206.html,
+sa,vx,Vaccination,2/17/21,,https://en.wikipedia.org/wiki/COVID-19_pandemic_in_South_Africa#Vaccines_distribution,
+br,npi,Restrictions,3/11/20,4/21/20,https://www.cnn.com/2020/07/03/health/coronavirus-lockdown-lifting-deadly-charts-intl/index.html,assume a 6-wk restriction
+br,virus,P.1 Id'd as a VOC,1/13/21,,https://www.theatlantic.com/health/archive/2021/02/coronavirus-pandemic-brazil-variant/617891/,
+br,vx,Vaccination,1/17/21,,https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Brazil#cite_note-80,
