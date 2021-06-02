@@ -1,4 +1,4 @@
-## Code and data for: Wan Yang & Jeffrey Shaman, Epidemiological characteristics of three SARS-CoV-2 variants of concern and implications for future COVID-19 pandemic outcomes. medRxiv, 2021.2005.2019.21257476 (2021).
+## Code and data for: Yang & Shaman, Epidemiological characteristics of three SARS-CoV-2 variants of concern and implications for future COVID-19 pandemic outcomes. medRxiv, 2021.2005.2019.21257476 (2021).
 
 
 ### data
