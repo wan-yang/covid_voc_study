@@ -287,10 +287,15 @@ multistrainSEIRSV <-function(tm_strt, tm_end, tm_step, S0, E0, I0, N,
     
     for(iv in 1:Ns){  # different effectiveness for diff variants
       percS = percSmax.t[iv,] # matrix: Ns x Np
-      vacc.d1[iv,] = percS * V1[cnt-1,] *  VE1 * VE1redn[iv] # number ppl vaccinated after first dose of vaccine
+      # compute the adjusted VE1 and VE2
+      VE1.adj = VE1 * VE1redn[iv]
+      VE2.adj = VE2 * VE2redn[iv]
+      VE2.adj.acc = 1-(1-VE2.adj)/(1-VE1.adj) 
+      vacc.d1[iv,] = percS * V1[cnt-1,] *  VE1.adj # VE1 * VE1redn[iv] # number ppl vaccinated after first dose of vaccine
       # dose 2: should we account for prior immunity as well? if so it should be ~1 month ago
       # for simplicity, use the same percS
-      vacc.d2[iv,] = percS * V2[cnt-1,] * (1 - VE1) * VE2  * VE2redn[iv]
+      
+      vacc.d2[iv,] = percS * V2[cnt-1,] * (1 - VE1.adj) * VE2.adj.acc  # (1 - VE1) * VE2  * VE2redn[iv]
     }
     
     
@@ -809,10 +814,19 @@ multistrainSEIRSVage <-function(tm_strt, tm_end, tm_step, S0, E0, I0, Nage,
     # assemble for different variants, account for reduction
     for(iv in 1:Ns){  # different effectiveness for diff variants
       percS = percSmax.t[paste0('percSmax.',1:Na,letters[iv]),] # matrix: Ns x Np
-      vacc.d1.t = percS * (V1[cnt-1,] *  VE1 * VE1redn[iv]) # for diff age groups # number ppl vaccinated after first dose of vaccine
+      
+      # compute the adjusted VE1 and VE2
+      VE1.adj = VE1 * VE1redn[iv]
+      VE2.adj = VE2 * VE2redn[iv]
+      VE2.adj.acc = 1-(1-VE2.adj)/(1-VE1.adj) 
+      
+      # vacc.d1.t = percS * (V1[cnt-1,] *  VE1 * VE1redn[iv]) # for diff age groups # number ppl vaccinated after first dose of vaccine
+      vacc.d1.t = percS * (V1[cnt-1,] *  VE1.adj)
+      
       # dose 2: should we account for prior immunity as well? if so it should be ~1 month ago
       # for simplicity, use the same percS
-      vacc.d2.t = percS * (V2[cnt-1,] * (1 - VE1) * VE2  * VE2redn[iv])
+      # vacc.d2.t = percS * (V2[cnt-1,] * (1 - VE1) * VE2  * VE2redn[iv])
+      vacc.d2.t = percS * (V2[cnt-1,] * (1 - VE1.adj) * VE2.adj.acc)
       
       rownames(vacc.d1.t) = paste0('vx.',1:Na,letters[iv])
       rownames(vacc.d2.t) = paste0('vx.',1:Na,letters[iv])

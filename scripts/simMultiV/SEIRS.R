@@ -438,7 +438,9 @@ SEIRSV = function(tm_strt, tm_end, tm_step=1, # 1 day time-step
     vacc.d1 = percS * V1[cnt-1,] *  VE1  # number ppl vaccinated after first dose of vaccine
     # dose 2: should we account for prior immunity as well? if so it should be ~1 month ago
     # for simplicity, use the same percS
-    vacc.d2 = percS * V2[cnt-1,] * (1 - VE1) * VE2 
+    # adjust for additional VE for the 2nd dose
+    VE2acc = 1-(1-VE2)/(1-VE1)
+    vacc.d2 = percS * V2[cnt-1,] * (1 - VE1) * VE2acc 
     
     # seed = seed # seeding
     # seed = runif(np, seed*p.home.lwr, seed*p.home.upr) # city baseline from outside, p.home.lwr - p.home.upr from home 
