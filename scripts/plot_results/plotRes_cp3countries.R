@@ -143,7 +143,7 @@ p.titles4 = c('(A) UK: Model-fit',
               '(F) Brazil: Estimated Rt and infection rate'
 )
 # validation using independent data
-# UK: REACT study, 10 rounds of testing
+# UK: REACT-1 study, 10 rounds of testing
 vda.uk = read.csv(paste0(dir_data, 'uk_react.study.csv'), stringsAsFactors = F, header = F) %>% data.table()
 vda.uk = vda.uk[c(1:3,11),] %>% t  %>% data.table()
 colnames(vda.uk)= vda.uk[1] %>% unlist
@@ -364,7 +364,7 @@ for(loc.t in locs){
   points(x, obs.uk$mean, pch = "*", lwd = 2, cex = 1, col='red')
   arrows(x, obs.uk$ci95.lwr, x, obs.uk$ci95.upr, length=0.03, angle=90, code=3, col = 'red', lwd = 1)
   axis(1,at=x,labels = format(dates.uk.t,'%m/%d/%y'),mgp=c(1.0,.1,0),cex.axis=.85)
-  legend('topleft', c('Model estimates','Data from the REACT study\n(Riley et al. 2021)'), seg.len = .8, cex = .8, lty = 1, lwd = 2, col = c('blue','red'), bty = 'n')
+  legend('topleft', c('Model estimates','Data from the REACT-1 study\n(Riley et al. 2021)'), seg.len = .8, cex = .8, lty = 1, lwd = 2, col = c('blue','red'), bty = 'n')
   mtext('(B) UK: Model validation', line = .1, adj = 0, cex = .85)
   # for SA
   x1 = pmatch(obs.sa1$date, dates.sa.t)
@@ -439,7 +439,7 @@ for(loc.t in locs){
         tx.t = e.t[i]$event
         rect(xleft=d.t1, ybottom=-1000, xright=d.t2, ytop=ymax*(z+z.width*2), angle = 45,col = alpha('grey',.2), border = 'transparent') # ymax*(z-z.width*2)
         # arrows(x0=d.t, y0=ymax*(z-z.width*(i*2+1)), x1=max(x), length=.05)
-        text(d.t3,ymax-y.offset, tx.t, adj = .5, cex=.7,srt=0, font = 1); # pos=4,
+        text(d.t3+ifelse(loc.t=='br',1,0),ymax-y.offset, tx.t, adj = .5, cex=.7,srt=0, font = 1); # pos=4,
       }
     }
     e.t = events.t[type == 'virus']
@@ -530,7 +530,7 @@ for(loc.t in locs){
         tx.t = e.t[i]$event
         rect(xleft=d.t1, ybottom=-1000, xright=d.t2, ytop=ymax*(z+z.width*2), angle = 45,col = alpha('grey',.2), border = 'transparent') # ymax*(z-z.width*2)
         # arrows(x0=d.t, y0=ymax*(z-z.width*(i*2+1)), x1=max(x), length=.05)
-        text(d.t3,ymax-y.offset, tx.t, adj = .5, cex=.7,srt=0, font = 1); # pos=4,
+        text(d.t3+ifelse(loc.t=='br',1,0),ymax-y.offset, tx.t, adj = .5, cex=.7,srt=0, font = 1); # pos=4,
       }
     }
     e.t = events.t[type == 'virus']
@@ -579,11 +579,12 @@ for(loc.t in locs){
   tda=dcast(tda, date ~ stat, value.var = 'value')
   ymax=max(tda$ci95.upr)*1.05; 
   
-  plot(x,tda$mean,ylab='Estimated transmissibility',ylim=c(-.5, ymax),type='l',col='blue',lwd=2,xlab='',xaxt='n')
+  plot(x,tda$mean,ylab='',ylim=c(-.5, ymax),type='l',col='blue',lwd=2,xlab='',xaxt='n', yaxt='n')
   polygon(c(x,rev(x)),c(tda$ci95.lwr,rev(tda$ci95.upr)),col=alpha('blue',.15),border='transparent')
   polygon(c(x,rev(x)),c(tda$iqr.lwr,rev(tda$iqr.upr)),col=alpha('blue',.3),border='transparent')
   # axis(1,at=x,labels = format(dates.t,'%m/%d/%y'),mgp=c(.9,.1,0),cex.axis=.85)
-  
+  axis(2,mgp=c(1.0,.1,0),cex.axis=.85, col.ticks = 'blue', col.lab = 'blue', col.axis='blue')
+  mtext('Estimated transmissibility', side=2, outer = F, line = .9, cex=.75, col = 'blue')
   mtext(p.titles2[cnt],cex=.85,side=3,outer = F,line=.1,adj=0)
   
   # right panel
@@ -618,7 +619,7 @@ for(loc.t in locs){
         tx.t = e.t[i]$event
         rect(xleft=d.t1, ybottom=-1000, xright=d.t2, ytop=ymax*(z+z.width*2), angle = 45,col = alpha('grey',.2), border = 'transparent') # ymax*(z-z.width*2)
         # arrows(x0=d.t, y0=ymax*(z-z.width*(i*2+1)), x1=max(x), length=.05)
-        text(d.t3,ymax-y.offset, tx.t, adj = .5, cex=.7,srt=0, font = 1); # pos=4,
+        text(d.t3+ifelse(loc.t=='br',1,0),ymax-y.offset, tx.t, adj = .5, cex=.7,srt=0, font = 1); # pos=4,
       }
     }
     e.t = events.t[type == 'virus']
@@ -667,11 +668,12 @@ for(loc.t in locs){
   tda=dcast(tda, date ~ stat, value.var = 'value')
   ymax=max(tda$ci95.upr)*1.05; 
   
-  plot(x,tda$mean,ylab='Estimated susceptibility (%)',ylim=c(0, 100),type='l',col='blue',lwd=2,xlab='',xaxt='n')
+  plot(x,tda$mean,ylab='',ylim=c(0, 100),type='l',col='blue',lwd=2,xlab='',xaxt='n', yaxt='n')
   polygon(c(x,rev(x)),c(tda$ci95.lwr,rev(tda$ci95.upr)),col=alpha('blue',.15),border='transparent')
   polygon(c(x,rev(x)),c(tda$iqr.lwr,rev(tda$iqr.upr)),col=alpha('blue',.3),border='transparent')
   # axis(1,at=x,labels = format(dates.t,'%m/%d/%y'),mgp=c(.9,.1,0),cex.axis=.85)
-  
+  axis(2,mgp=c(1.0,.1,0),cex.axis=.85, col.ticks = 'blue', col.lab = 'blue', col.axis='blue')
+  mtext('Estimated susceptibility (%)', side=2, outer = F, line = .9, cex=.75, col = 'blue')
   mtext(p.titles2[cnt],cex=.85,side=3,outer = F,line=.1,adj=0)
 }
 dev.off()
@@ -896,7 +898,7 @@ wea3$Country = 'Brazil'
 wea = rbind(wea1, wea2, wea3)
 wea$Country = factor(wea$Country, levels = c('UK', 'South Africa', 'Brazil'))
 wea = melt(wea[, c('Country','week','temp', 'spec.hum')], id.vars = c('Country','week'))
-wea$variable = factor(wea$variable, levels = c('temp', 'spec.hum'), labels = c('Temperature (C)', 'Specific humidity (kg/kg)'))
+wea$variable = factor(wea$variable, levels = c('temp', 'spec.hum'), labels = c('Temperature (°C)', 'Specific humidity (kg/kg)'))
 wea = wea[week != 53]
 
 theme.t = theme(plot.title = element_text(v=0, size = 11, margin=margin(0,0,2,0)), 

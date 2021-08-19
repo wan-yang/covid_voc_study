@@ -269,10 +269,10 @@ p1 = getPlotMultiVoverlay(tda, title.t = '(A) Example projections: Slow full reo
                           y.lab = paste0('Projected weekly number of ',gsub('New ','', mea.t), ' per million'), ncol.t = 3, withObs = F, col.set = col.set.t)
 # print(p1)
 # plot summary with multiple comparison
-p2 = getPlotTotals(tda2, title.t = paste0('(B) Projected cumulative ',gsub('New ','', mea.t)), 
+p2 = getPlotTotals(tda2, title.t = paste0('(B) Projected cumulative ',gsub('New ','', mea.t,': Assuming mRNA vaccines used')), 
                    y.lab = 'Projected totals per million (median)', ncol.t = 9, col.set = col.set.t)
 # print(p2)
-p3 = getPlotMultiVoverlay(tda1, title.t = '(A) Example projections: Assuming same VE as for the wildtype virus', 
+p3 = getPlotMultiVoverlay(tda1, title.t = '(A) Example projections: Assuming mRNA vaccines used and same VE as for the wildtype virus', 
                           y.lab = paste0('Projected weekly number of ',gsub('New ','', mea.t), ' per million'), ncol.t = 3, withObs = F, col.set = col.set.t)
 
 pdf(paste0(dir_plot,'Fig4v0_proj_', mea.t, date.tag,'.pdf'),width = 9, height = 7)
@@ -386,10 +386,10 @@ p1 = getPlotMultiVoverlay(tda, title.t = '(A) Example projections: Slow full reo
                           y.lab = paste0('Projected weekly number of ',gsub('New ','', mea.t), ' per million'), ncol.t = 3, withObs = F, col.set = col.set.t)
 # print(p1)
 # plot summary with multiple comparison
-p2 = getPlotTotals(tda2, title.t = paste0('(B) Projected cumulative ',gsub('New ','', mea.t)), 
+p2 = getPlotTotals(tda2, title.t = paste0('(B) Projected cumulative ',gsub('New ','', mea.t,': Assuming mRNA vaccines used')), 
                    y.lab = 'Projected totals per million (median)', ncol.t = 3, col.set = col.set.t, theme.tt = theme.t3)
 # print(p2)
-p3 = getPlotMultiVoverlay(tda1, title.t = '(A) Example projections: Assuming same VE as for the wildtype virus', 
+p3 = getPlotMultiVoverlay(tda1, title.t = '(A) Example projections: Assuming mRNA vaccines used and same VE as for the wildtype virus', 
                           y.lab = paste0('Projected weekly number of ',gsub('New ','', mea.t), ' per million'), ncol.t = 3, withObs = F, col.set = col.set.t)
 
 
