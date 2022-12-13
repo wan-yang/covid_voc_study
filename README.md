@@ -20,4 +20,4 @@ wy2202 at cumc.columbia.edu
 ### reference
 Wan Yang & Jeffrey Shaman, Epidemiological characteristics of three SARS-CoV-2 variants of concern and implications for future COVID-19 pandemic outcomes. medRxiv, 2021.2005.2019.21257476 (2021). https://www.medrxiv.org/content/10.1101/2021.05.19.21257476v1
 
-Wan Yang & Jeffrey Shaman, Development of a model-inference system for estimating epidemiological characteristics of SARS-CoV-2 variants of concern
+Wan Yang & Jeffrey Shaman, Development of a model-inference system for estimating epidemiological characteristics of SARS-CoV-2 variants of concern. Nat Commun 12, 5573 (2021). https://doi.org/10.1038/s41467-021-25913-9
